@@ -1,73 +1,68 @@
-# React + TypeScript + Vite
+# URBREATH Footer Web Component
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A reusable footer Web component for URBREATH projects.
 
-Currently, two official plugins are available:
+## Build Instructions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Prerequisites
+- **Node.js**: v22.21.0 (this is the version this project was developed with)
+- **npm**
 
-## React Compiler
+### Local Development
+```bash
+# Install dependencies
+npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+# Start development server
+npm run dev
 
-## Expanding the ESLint configuration
+# Run linting
+npm run lint
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+# Type checking
+npm run type-check
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+# Build for production
+npm run build
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Building the app generates the production files in the `dist/ folder`, including:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+`urbreath-footer.umd.js` - this is the main UMD bundle for external consumption
+
+## Usage
+Partners can include the footer by:
+
+a) Adding the below script tag to the head section of their HTML document
+```bash
+<script src="[HOSTED_URL]/urbreath-footer.umd.js"></script>
+```
+
+b) Inserting the urbreath-footer tag in the body section, wherever they want the footer to appear in their HTML document
+
+```bash
+<urbreath-footer/>
+```
+
+For WordPress applications, they need to:
+
+a) Include the below function in the active theme's functions.php file:
+```bash
+function enqueue_urbreath_react_widget() {
+    wp_enqueue_script(
+        'urbreath-footer',
+        '[HOSTED_URL]/urbreath-footer.umd.js',
+        array(),
+        '1.0.0',
+        true
+    );
+}
+add_action('wp_enqueue_scripts', 'enqueue_urbreath_react_widget');
+```
+b) Add the urbreath-footer tag inside a Shortcode or Custom HTML block in the page they want to add the footer to:
+
+```bash
+<urbreath-footer/>
 ```

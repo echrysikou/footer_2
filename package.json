@@ -13,6 +13,8 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@fontsource/open-sans": "^5.2.7",
+    "@fontsource/rubik": "^5.2.8",
     "@mui/material": "^7.3.4",
     "@r2wc/react-to-web-component": "^2.1.0",
     "@tabler/icons-react": "^3.35.0",
@@ -32,6 +34,7 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.22",
     "globals": "^16.4.0",
+    "sass": "^1.93.2",
     "tslib": "^2.8.1",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.45.0",

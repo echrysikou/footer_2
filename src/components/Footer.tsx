@@ -29,13 +29,18 @@ const Footer = () => {
     >
       <Grid container spacing={5} sx={{ paddingTop: "0px!important" }}>
         <Grid
-          sx={{ display: "flex", flexDirection: { xs: "column", md: "row" } }}
+          sx={{
+            display: "flex",
+            flexDirection: { xs: "column", lg: "row" },
+            gap: 2,
+          }}
         >
           <Grid
             sx={{
               display: "flex",
-              alignItems: { xs: "center", md: "normal" },
-              maxWidth: { xs: "unset", md: "220px!important" },
+              alignItems: { xs: "center", lg: "normal" },
+              maxWidth: { xs: "unset", lg: "220px" },
+              minWidth: { xs: "unset", lg: "180px" },
               gap: 2,
             }}
           >
@@ -52,10 +57,17 @@ const Footer = () => {
             <Typography variant="body2" color="grey.800" fontWeight="700">
               {texts.coFunded}
             </Typography>
+
+            <div style={{ fontFamily: 'Rubik, sans-serif', fontSize: '24px' }}>
+  <div style={{ fontWeight: 400 }}>Weight 400 - Regular</div> ELENA 2
+  <div style={{ fontWeight: 500 }}>Weight 500 - Medium</div>
+  <div style={{ fontWeight: 600 }}>Weight 600 - SemiBold</div>
+  <div style={{ fontWeight: 700 }}>Weight 700 - Bold</div>
+</div>
           </Grid>
           <Grid
             sx={{ display: "flex", flexDirection: "column" }}
-            gap={{ xs: 2, md: 4 }}
+            gap={{ xs: 2, lg: 4 }}
           >
             <Typography variant="caption" color="grey.800" fontSize={"13px"}>
               {texts.grantAgreement}
@@ -71,17 +83,18 @@ const Footer = () => {
                 display: "flex",
                 flexDirection: { xs: "column", sm: "row" },
                 justifyContent: "space-between",
-                alignItems: "flex-start",
+                alignItems: { xs: "flex-start", sm: "center" },
                 flexWrap: { xs: "wrap", lg: "nowrap" },
+                columnGap: 3,
+                rowGap: 2,
               }}
-              gap={3}
             >
-              <Stack
-                direction={{ xs: "column", sm: "row" }}
-                spacing={2}
+              <Grid
+                container
+                direction="row"
+                gap={2}
                 sx={{
-                  display: "flex",
-                  alignItems: { xs: "flex-start", sm: "center" },
+                  alignItems: "center",
                   "& .MuiTypography-root": {
                     color: "primary.700",
                     whiteSpace: { xs: "wrap", sm: "nowrap" },
@@ -133,7 +146,7 @@ const Footer = () => {
                 >
                   {texts.privacyPolicy}
                 </Link>
-              </Stack>
+              </Grid>
 
               <Stack
                 direction="row"
@@ -144,6 +157,7 @@ const Footer = () => {
                   gap: 2,
                   fontSize: 13,
                   "& svg": { color: "primary.700" },
+                  "& .MuiLink-root": { display: "flex" },
                 }}
               >
                 <Link
